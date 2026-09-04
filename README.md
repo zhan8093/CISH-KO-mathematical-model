@@ -39,6 +39,8 @@ scripts/
 
 Model calibration follows a sequential parameter-reduction procedure guided by pairwise correlation and profile-likelihood analysis. The final model fits seven patient-level parameters (`dL`, `kL`, `pL`, `muL`, `pN`, `f_dose`, `kappa`) together with a lesion-specific tumour growth rate.
 
+The murine directories under `scripts/figures/figure2_3/` also contain an earlier MATLAB implementation of the same model (`.m` files) alongside the Julia version used for the manuscript figures. `scripts/calibration/test_objective.jl` re-evaluates the objective function at the stored optimal parameters as a consistency check, and `scripts/calibration/exp*/CISH_KO.slurm` are the job scripts used to run the fits on an HPC cluster.
+
 ## Reproducing the figures
 
 Run each script from its own directory under `scripts/figures/`.
