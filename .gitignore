@@ -1,0 +1,94 @@
+# ---------------------------------------------------------------------------
+# Patient-level clinical data  --  MUST NOT be published
+#
+# These patterns are deliberately broad and are written without relying on
+# case-insensitive matching, because git's `core.ignorecase` is true on macOS
+# (APFS) but false on Linux: a pattern that appears to work locally can start
+# tracking files on a collaborator's or CI machine.
+#
+# See PATIENT_DATA_AUDIT.md for the full inventory of what these cover.
+# ---------------------------------------------------------------------------
+
+# Raw clinical trial source data (per-patient tumour measurements, cell dose,
+# IL-2 doses, CISH-KO assay results, for every enrolled subject)
+CISH_pt_data.xlsx
+cish_pt_doses.xlsx
+
+# HPC job logs: these echo per-patient filenames, subject IDs and fitted
+# values as the fits run. They are build output, never source.
+julia_output_*.txt
+julia_error_*.txt
+slurm-*.out
+
+# Simulated-therapy results (inputs to Fig 7). Rows are keyed by tumour
+# ("patient_002_tumor_1") and hold fitted parameters plus simulated outcomes.
+# The two clinical columns (initial_tumor_size, cish_dose) have been removed
+# from the tracked copies -- nothing reads them -- so what remains is entirely
+# model-derived and Fig 7 reproduces from a clean clone. Unmodified originals
+# are in _archive/original_parameter_tables/.
+
+# Per-patient longitudinal CISH-KO ratio measurements (UMN IDs in content)
+CISHKO_Pct_result.csv
+
+# Per-patient uncertainty and prediction outputs
+optimal_parameters_by_patient.csv
+Uncertainty_AllPatients.csv
+real_patient_predictions.csv
+
+# Anything carrying a subject identifier in its name: per-patient fit figures,
+# per-patient likelihood profiles, per-patient schedule trajectories
+*UMN_0*
+*UMN0*
+Patient_*
+patient_*
+Profile_Likelihood_*
+Aggregate_Profile_*
+
+# ...except the model-derived parameter tables, which ARE published as Table D
+# in S1 Text. Shipping them lets Figs 4-8 be reproduced from a clean clone with
+# no access to the clinical data. The two clinical columns (initial_tumor_size,
+# cish_dose) have been removed from the tracked copies of the *_with_ratio table;
+# unmodified originals are kept in _archive/original_parameter_tables/.
+# These re-include rules must stay AFTER the broad patterns above.
+!Patient_UMN_*_paras.json
+!patient_tumor_params.csv
+!patient_tumor_params_with_ratio.csv
+
+# Manuscript supplement source: captions/labels enumerate the full subject
+# roster (UMN_002-UMN_022). Un-ignore only after de-identifying the captions.
+supplement_figures.tex
+
+# ---------------------------------------------------------------------------
+# Superseded / scratch material kept on disk but not published
+# ---------------------------------------------------------------------------
+_archive/
+
+# ---------------------------------------------------------------------------
+# Local output directories
+# ---------------------------------------------------------------------------
+output/
+outputs/
+results/
+tmp/
+figures/generated/
+
+# ---------------------------------------------------------------------------
+# Scratch, logs, editor and OS cruft
+# ---------------------------------------------------------------------------
+*.log
+*.asv
+*.zip
+*.jl.cov
+*.jl.mem
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.vscode/
+.idea/
+.claude/
+.julia/
+
+# Note: Project.toml and Manifest.toml are intentionally NOT ignored --
+# both are committed so that Pkg.instantiate() reproduces the exact
+# environment used for the manuscript.

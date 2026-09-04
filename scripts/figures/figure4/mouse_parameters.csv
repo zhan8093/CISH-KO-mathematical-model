@@ -1,0 +1,20 @@
+parameter,unit,description,mouse_2015,mouse_2022
+gamma,day^-1,Tumor intrinsic growth rate,0.218047,0.177983
+K,mm^2,Carrying capacity for total T-cell population,1,1
+kL,day^-1,Tumor killing rate by CISH-KO T-cells,0.551921,1.10475
+kLo,day^-1,Tumor killing rate by wild-type T-cells,0.4834,0.483414
+kN,day^-1,Tumor killing rate by endogenous T-cells,1e-4,1e-4
+muL,day^-1 mm^-2,Tumor-induced exhaustion rate of L,1.2e-4,1.2e-4
+muN,day^-1 mm^-2,Tumor-induced exhaustion rate of N,1.57e-4,1.57e-4
+dL,day^-1,Natural death rate of L,0.05,0.354076
+dN,day^-1,Natural death rate of N,3e-2,3e-2
+pL,day^-1,Proliferation rate of L,0.264197,0.3539
+pN,day^-1,Proliferation rate of N,5e-2,5e-2
+delta,day^-1,Tumor-induced recruitment rate of N,0.1,0.1
+h,mm^2,Half-saturation constant for endogenous T-cell recruitment,1e3,1e3
+f_dose,day^-1,Clearance rate of infused T-cells prior to engraftment,0,0
+kappa,day^-1,Rate of infiltration from dose compartment to L,0.2,0.05
+muZ,day^-1,Natural decay rate of anti-PD-1 drug,,0.1
+a,,Shape parameter for alpha(Z),,8.8e-3
+b,,Sigmoid steepness parameter for alpha(Z),,0.4426
+bL,,Sigmoid steepness parameter for alphaL(Z),,1e-2

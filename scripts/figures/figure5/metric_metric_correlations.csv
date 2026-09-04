@@ -1,0 +1,5 @@
+x_metric,y_metric,correlation,p_value,n_points,significant
+T_AUC_normalized,L_max,0.3427033604512286,0.04074874927520589,36,true
+T_AUC_normalized,L_AUC,0.17553424172335863,0.3058285077829541,36,false
+tumor_ratio,L_AUC,0.26340747383730073,0.12060845260630937,36,false
+tumor_ratio,L_max,0.4655540657892541,0.004218805433163997,36,true
